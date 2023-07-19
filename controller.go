@@ -183,6 +183,8 @@ func (c *Controller) pollLoop() {
 
 		case p := <-c.cNode.pollReplyCh:
 			cfg := ConfigFromArtPollReply(p)
+			fmt.Printf("%+d", cfg.BaseAddress.Net)
+			fmt.Printf("%+d", cfg.BaseAddress.SubUni)
 
 			if cfg.Type != code.StNode && cfg.Type != code.StController {
 				// we don't care for ArtNet devices other then nodes and controllers for now @todo
