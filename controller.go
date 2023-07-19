@@ -12,8 +12,8 @@ import (
 )
 
 var broadcastAddr = net.UDPAddr{
-	IP:   []byte{0x02, 0xff, 0xff, 0xff},
-	Port: int(packet.ArtNetPort),
+	IP:   []byte{0x10, 0x00, 0x00, 0xff},
+	Port: packet.ArtNetPort,
 }
 
 // we poll for new nodes every 3 seconds
