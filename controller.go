@@ -183,8 +183,6 @@ func (c *Controller) pollLoop() {
 
 		case p := <-c.cNode.pollReplyCh:
 			cfg := ConfigFromArtPollReply(p)
-			fmt.Printf("%+d", cfg.BaseAddress.Net)
-			fmt.Printf("%+d", cfg.BaseAddress.SubUni)
 
 			if cfg.Type != code.StNode && cfg.Type != code.StController {
 				// we don't care for ArtNet devices other then nodes and controllers for now @todo
@@ -327,6 +325,7 @@ func (c *Controller) updateNode(cfg NodeConfig) error {
 
 	// new node, add it to our known nodes
 	c.log.With(Fields{"node": cfg.Name, "ip": cfg.IP.String()}).Debug("added node")
+	fmt.Printf("/nDEBUG:/n/n%+v/n", cfg)
 	node := &ControlledNode{
 		Node:       cfg,
 		DMXBuffer:  buf,
